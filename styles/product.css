@@ -127,8 +127,8 @@
   color: #8a5d3c;
 }
 .p-hero__title {
-  font-size: clamp(3rem, 2rem + 5vw, 6.5rem);
-  line-height: 0.95;
+  font-size: clamp(2.5rem, 1.8rem + 4vw, 5.25rem);
+  line-height: 1.02;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -143,6 +143,7 @@
 }
 .p-hero__tagline {
   font-family: var(--font-display);
+  font-weight: 500;
   font-style: italic;
   font-size: var(--fs-h4);
   color: var(--w-accent);
@@ -212,6 +213,7 @@
 }
 .layer-switch__k {
   font-family: var(--font-display);
+  font-weight: var(--fw-display);
   font-size: var(--fs-h4);
   line-height: 1.1;
 }
@@ -247,6 +249,7 @@
 .chapter__num {
   flex: none;
   font-family: var(--font-display);
+  font-weight: 500;
   font-style: italic;
   font-size: var(--fs-h4);
   color: var(--gold);
@@ -272,6 +275,7 @@
 .name-meaning {
   font-size: var(--fs-h4);
   font-style: italic;
+  font-weight: 500;
   line-height: 1.35;
   padding-left: var(--s-4);
   border-left: 1px solid var(--gold);
@@ -399,6 +403,7 @@
   place-items: center;
   height: 100%;
   font-family: var(--font-display);
+  font-weight: var(--fw-display);
   font-size: var(--fs-h3);
 }
 .ingredient__name {
@@ -588,7 +593,7 @@
 .exit__primary strong {
   font-family: var(--font-display);
   font-size: var(--fs-h4);
-  font-weight: 500;
+  font-weight: var(--fw-display);
 }
 .exit__primary span span {
   font-size: var(--fs-sm);
@@ -648,7 +653,7 @@
 .exit__other strong {
   font-family: var(--font-display);
   font-size: var(--fs-h4);
-  font-weight: 500;
+  font-weight: var(--fw-display);
 }
 .exit__other span span {
   font-size: var(--fs-sm);

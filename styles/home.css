@@ -156,13 +156,14 @@
   justify-items: center;
 }
 .hero__title {
-  font-size: clamp(2.125rem, 1.4rem + 4.2vw, 5rem);
+  font-size: clamp(2rem, 1.3rem + 3.6vw, 4.25rem);
   line-height: 1.02;
   max-width: 14ch;
 }
 .hero__title em {
   display: block;
   font-style: italic;
+  font-weight: 500;
   color: var(--gold);
 }
 .hero__lede {
@@ -206,9 +207,12 @@
 
 @media (min-width: 1024px) {
   .hero__grid {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
     align-items: center;
     gap: var(--s-7);
+  }
+  .hero__title {
+    max-width: 17ch;
   }
   .hero__copy {
     order: -1;
@@ -371,7 +375,7 @@
   color: #8a5d3c;
 }
 .story-band__name {
-  font-size: clamp(2.5rem, 1.6rem + 4.5vw, 5rem);
+  font-size: clamp(2.25rem, 1.5rem + 3.8vw, 4.25rem);
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -386,6 +390,7 @@
 }
 .story-band__tagline {
   font-family: var(--font-display);
+  font-weight: 500;
   font-style: italic;
   font-size: var(--fs-h4);
   color: var(--w-accent);
@@ -472,12 +477,14 @@
 .opp-preview__num {
   grid-row: span 2;
   font-family: var(--font-display);
+  font-weight: var(--fw-display);
   font-size: var(--fs-h3);
   color: var(--gold);
   line-height: 1;
 }
 .opp-preview__name {
   font-family: var(--font-display);
+  font-weight: var(--fw-display);
   font-size: var(--fs-h4);
 }
 .opp-preview__meta {

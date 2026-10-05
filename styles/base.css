@@ -60,7 +60,7 @@ h3,
 h4 {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: var(--fw-display);
   line-height: var(--lh-tight);
   letter-spacing: -0.01em;
   text-wrap: balance;
@@ -199,6 +199,7 @@ ol {
 
 .serif {
   font-family: var(--font-display);
+  font-weight: var(--fw-display);
 }
 
 .rule {
@@ -221,6 +222,7 @@ ol {
 }
 .section-head__index {
   font-family: var(--font-display);
+  font-weight: 500;
   font-size: var(--fs-h4);
   color: var(--gold);
   font-style: italic;
@@ -243,7 +245,8 @@ ol {
   color: var(--btn-fg);
   font-size: var(--fs-sm);
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+  word-spacing: 0.08em;
   text-decoration: none;
   text-align: center;
   line-height: 1.2;
