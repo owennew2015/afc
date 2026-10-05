@@ -10,7 +10,6 @@ export function StoriesPreview() {
       <div className="container">
         <SectionHeading
           id="cerita-title"
-          index="04"
           eyebrow="Cerita"
           title="Cerita dari mereka"
           lede="Lewat AFC Care, AFC membangun health center dan sumber air bersih bersama masyarakat."

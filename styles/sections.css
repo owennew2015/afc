@@ -195,20 +195,15 @@
   border-left: 1px solid var(--line-strong);
   margin-left: 1rem;
 }
-.trust__num {
+.trust__dot {
   position: absolute;
-  left: -1rem;
-  top: var(--s-5);
-  display: grid;
-  place-items: center;
-  width: 2rem;
-  height: 2rem;
+  left: -5px;
+  top: calc(var(--s-5) + 6px);
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background: var(--bg-sunken);
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-size: 0.6875rem;
-  font-weight: 700;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px var(--bg-sunken);
 }
 .trust__label {
   font-size: var(--fs-xs);
@@ -223,17 +218,8 @@
   color: var(--ink-soft);
   max-width: 34rem;
 }
-.trust__foot {
-  display: flex;
-  align-items: center;
-  gap: var(--s-4);
-}
+
 .trust__link {
-  display: inline-grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  text-decoration: none;
   color: var(--gold);
 }
 @media (min-width: 1024px) {
@@ -247,9 +233,9 @@
     border-top: 1px solid var(--line-strong);
     align-content: start;
   }
-  .trust__num {
+  .trust__dot {
     left: 0;
-    top: -1rem;
+    top: -5px;
   }
 }
 
@@ -954,34 +940,6 @@
   background: var(--gold);
 }
 
-/* ---------- Quality page ---------- */
-.reading-guide {
-  padding: var(--s-5);
-  border: 1px solid var(--line);
-  border-radius: var(--r-lg);
-  background: var(--bg-raised);
-}
-.reading-guide .block-title {
-  margin-bottom: var(--s-4);
-  font-size: var(--fs-h4);
-}
-.reading-guide ul {
-  list-style: none;
-  display: grid;
-  gap: var(--s-3);
-}
-.reading-guide li {
-  display: grid;
-  gap: 4px;
-  font-size: var(--fs-sm);
-  color: var(--ink-soft);
-}
-@media (min-width: 720px) {
-  .reading-guide li {
-    grid-template-columns: 11rem 1fr;
-    align-items: baseline;
-  }
-}
 .safety {
   display: grid;
   gap: var(--s-6);
@@ -1335,4 +1293,65 @@
 }
 .topic__go {
   font-size: var(--fs-lg);
+}
+
+/* ---------- Recommender: single result ---------- */
+.recommender__result--single {
+  grid-template-columns: 1fr;
+  align-items: center;
+  border-left: 3px solid var(--w-mid);
+  animation: fade-up 500ms var(--ease-out);
+}
+.recommender__result--single .recommender__img {
+  max-width: 240px;
+}
+.recommender__body {
+  display: grid;
+  gap: var(--s-3);
+}
+.recommender__result--single .recommender__name {
+  font-size: var(--fs-h3);
+}
+@media (min-width: 720px) {
+  .recommender__result--single {
+    grid-template-columns: 220px 1fr;
+    gap: var(--s-6);
+  }
+}
+.temukan__more {
+  margin-top: var(--s-5);
+}
+
+/* ---------- BPOM + quality brief ---------- */
+.bpom-list__product {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+.quality-brief {
+  display: grid;
+  gap: var(--s-6);
+  margin-bottom: var(--s-5);
+}
+.quality-brief__doc {
+  max-width: 220px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-sm);
+}
+.quality-brief__doc img {
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 720px) {
+  .quality-brief {
+    grid-template-columns: 1fr 220px;
+    align-items: start;
+  }
 }

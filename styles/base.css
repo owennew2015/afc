@@ -131,6 +131,13 @@ ol {
   transform: none;
 }
 
+/* Room for the sticky contact bar on phones */
+@media (max-width: 719px) {
+  main {
+    padding-bottom: 64px;
+  }
+}
+
 /* Layout */
 .container {
   width: 100%;
@@ -219,13 +226,6 @@ ol {
   margin-inline: auto;
   text-align: center;
   justify-items: center;
-}
-.section-head__index {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: var(--fs-h4);
-  color: var(--gold);
-  font-style: italic;
 }
 
 /* Buttons */

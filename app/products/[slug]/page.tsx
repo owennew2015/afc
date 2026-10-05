@@ -8,18 +8,17 @@ import { PatentList } from '@/components/product/PatentList';
 import { ProductChapter } from '@/components/product/ProductChapter';
 import { ProductExit } from '@/components/product/ProductExit';
 import { ProductHero } from '@/components/product/ProductHero';
+import { ProductSummary } from '@/components/product/ProductSummary';
 import { worldStyle } from '@/components/product/worldStyle';
 import { ExpertCard } from '@/components/sections/ExpertCard';
-import { TestimonialArchive } from '@/components/sections/TestimonialArchive';
-import { ClaimLabel } from '@/components/ui/ClaimLabel';
+import { TestimonialCard } from '@/components/sections/TestimonialCard';
 import { Reveal } from '@/components/ui/Reveal';
 import { SafeImage } from '@/components/ui/SafeImage';
 import { SourceMaterial } from '@/components/ui/SourceMaterial';
-import { WHATSAPP_MESSAGES } from '@/config/site';
+import { ASSETS } from '@/data/assets';
 import { getProduct, PRODUCT_SLUGS } from '@/data/products';
-import { EXPERT_MATERIAL } from '@/data/stories';
+import { EXPERT_MATERIAL, TESTIMONIALS } from '@/data/stories';
 import { cx } from '@/lib/cx';
-import { getWhatsAppUrl } from '@/lib/whatsapp';
 
 export function generateStaticParams() {
   return PRODUCT_SLUGS.map((slug) => ({ slug }));
@@ -46,6 +45,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const product = getProduct(params.slug);
   if (!product) notFound();
 
+  const testimonials = TESTIMONIALS.filter((t) => t.product === product.slug);
+  const expert = EXPERT_MATERIAL.product === product.slug ? EXPERT_MATERIAL : null;
+
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -61,88 +63,81 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
       <ProductHero product={product} />
 
-      <nav className="layer-switch" aria-label="Tingkat informasi">
-        <div className="container layer-switch__inner">
-          <a href="#apa-ini" className="layer-switch__item">
-            <span className="layer-switch__k">Esensial</span>
-            <span className="layer-switch__d">Yang perlu kamu tahu</span>
-          </a>
-          <a href="#deep-dive" className="layer-switch__item">
-            <span className="layer-switch__k">Deep Dive</span>
-            <span className="layer-switch__d">Teknologi, paten, materi asli</span>
-          </a>
-        </div>
-      </nav>
+      {/* Esensial: what it is, what it costs, how to get it */}
+      <ProductSummary product={product} />
 
-      <div id="esensial">
-        <ProductChapter id="apa-ini" number={2} kicker="Esensial" title={`Apa itu ${product.name}?`}>
+      <ProductChapter id="kenapa" title={`Kenapa ${product.name}`}>
+        <div className="split">
+          <Reveal>
+            <p className="statement serif">{product.positioning}</p>
+          </Reveal>
+          <Reveal as="ul" className="point-list" delay={120}>
+            {product.positioningPoints.map((pt) => (
+              <li key={pt}>{pt}</li>
+            ))}
+          </Reveal>
+        </div>
+      </ProductChapter>
+
+      <ProductChapter id="bahan" title="Bahan di dalamnya" tone="deep">
+        <IngredientExplorer groups={product.ingredientGroups} />
+      </ProductChapter>
+
+      <ProductChapter id="kualitas" title="Kualitas" tone="soft">
+        <div className="quality-brief">
+          <Reveal as="ul" className="point-list">
+            {product.bpom && <li>Terdaftar di BPOM: {product.bpom}</li>}
+            {product.quality.map((q) => (
+              <li key={q}>{q}</li>
+            ))}
+          </Reveal>
+          <Reveal className="quality-brief__doc" delay={120}>
+            <SafeImage asset={ASSETS.quality.certHalalAttachment} sizes="(min-width: 1024px) 240px, 45vw" />
+          </Reveal>
+        </div>
+        <Link href="/quality" className="link-arrow">
+          Lihat semua sertifikat <span aria-hidden="true">→</span>
+        </Link>
+      </ProductChapter>
+
+      {testimonials.length > 0 && (
+        <ProductChapter id="cerita" title="Cerita dari mereka">
+          <div className="testimonial-grid">
+            {testimonials.map((t) => (
+              <TestimonialCard key={`${t.name}-${t.quote.slice(0, 16)}`} testimonial={t} />
+            ))}
+          </div>
+        </ProductChapter>
+      )}
+
+      <DeepDiveSection chapters={['Tentang produk', 'Teknologi', 'Paten', 'Materi asli', 'Detail kemasan']}>
+        <ProductChapter id="tentang" kicker="Deep Dive" title={`Tentang ${product.name}`}>
           <div className="split">
-            <Reveal className="prose">
+            <div className="prose">
               {product.whatIs.map((p) => (
                 <p key={p}>{p}</p>
               ))}
-            </Reveal>
-            <Reveal className="split__aside" delay={120}>
-              <p className="name-meaning serif">{product.nameMeaning}</p>
-            </Reveal>
+            </div>
+            <p className="name-meaning serif">{product.nameMeaning}</p>
           </div>
         </ProductChapter>
 
-        <ProductChapter id="informasi" number={3} title="Informasi kunci" tone="soft">
-          <KeyFacts facts={product.packaging} />
-        </ProductChapter>
-
-        <ProductChapter id="positioning" number={4} title="Fokus produk">
-          <div className="split">
-            <Reveal>
-              <p className="statement serif">{product.positioning}</p>
-            </Reveal>
-            <Reveal as="ul" className="point-list" delay={120}>
-              {product.positioningPoints.map((pt) => (
-                <li key={pt}>{pt}</li>
-              ))}
-            </Reveal>
-          </div>
-        </ProductChapter>
-
-        <ProductChapter id="bahan" number={5} title="Bahan di dalamnya" tone="deep">
-          <IngredientExplorer groups={product.ingredientGroups} />
-        </ProductChapter>
-
-        <ProductChapter id="cara-konsumsi" number={6} title="Cara konsumsi">
-          <Reveal className="placeholder usage">
-            {product.usage ?? (
-              <>
-                <strong>[Informasi cara konsumsi akan ditambahkan]</strong>
-                <span>Sementara itu, ikuti petunjuk pada kemasan atau tanyakan langsung kepada konsultan.</span>
-              </>
-            )}
-          </Reveal>
-        </ProductChapter>
-      </div>
-
-      <DeepDiveSection chapters={['Teknologi', 'Materi pendukung', 'Cerita', 'Kualitas']}>
-        <ProductChapter id="teknologi" number={7} kicker="Deep Dive" title="Teknologi & paten">
+        <ProductChapter id="teknologi" kicker="Deep Dive" title="Teknologi" tone="soft">
           <div className="tech-grid">
             {product.technology.map((t) => (
-              <Reveal key={t.title} className="tech">
+              <div key={t.title} className="tech">
                 <h3 className="tech__title">{t.title}</h3>
                 <p>{t.body}</p>
-                <p className="tech__meta">
-                  <ClaimLabel kind={t.kind} />
-                  <span className="source-ref">{t.source}</span>
-                </p>
-              </Reveal>
+              </div>
             ))}
           </div>
-          <PatentList patents={product.patents} note={product.patentNote} />
+          <PatentList patents={product.patents} />
         </ProductChapter>
 
-        <ProductChapter id="materi" number={8} kicker="Deep Dive" title="Materi pendukung" tone="soft">
-          <Reveal className="key-visual">
+        <ProductChapter id="materi" kicker="Deep Dive" title="Materi pendukung">
+          <div className="key-visual">
             <SafeImage asset={product.keyVisual} sizes="(min-width: 1024px) 1100px, 100vw" />
-            <p className="source-ref">Key visual asli · {product.keyVisual.source}</p>
-          </Reveal>
+          </div>
           {product.awards.length > 0 && (
             <ul className="point-list point-list--awards">
               {product.awards.map((a) => (
@@ -151,39 +146,13 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             </ul>
           )}
           <SourceMaterial items={product.supportingMaterial} />
-          {EXPERT_MATERIAL.product === product.slug && <ExpertCard expert={EXPERT_MATERIAL} />}
+          {expert && <ExpertCard expert={expert} />}
         </ProductChapter>
 
-        <ProductChapter id="cerita" number={9} kicker="Deep Dive" title="Cerita dari mereka">
-          <TestimonialArchive product={product.slug} />
-        </ProductChapter>
-
-        <ProductChapter id="kualitas" number={10} kicker="Deep Dive" title="Kualitas" tone="soft">
-          <ul className="point-list">
-            {product.quality.map((q) => (
-              <li key={q}>{q}</li>
-            ))}
-          </ul>
-          <Link href="/quality" className="link-arrow">
-            Lihat sertifikat & dokumen kualitas <span aria-hidden="true">→</span>
-          </Link>
+        <ProductChapter id="kemasan" kicker="Deep Dive" title="Detail kemasan" tone="soft">
+          <KeyFacts facts={product.packaging} />
         </ProductChapter>
       </DeepDiveSection>
-
-      <ProductChapter id="harga" number={11} title="Harga">
-        <Reveal className="price">
-          <p className="price__value serif">{product.price ?? 'Harga akan ditambahkan'}</p>
-          <p className="muted">Untuk informasi harga dan ketersediaan terbaru, hubungi konsultan AFC.</p>
-          <a
-            className="btn"
-            href={getWhatsAppUrl(WHATSAPP_MESSAGES.product(product.name))}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Tanyakan harga {product.name}
-          </a>
-        </Reveal>
-      </ProductChapter>
 
       <ProductExit product={product} />
     </div>

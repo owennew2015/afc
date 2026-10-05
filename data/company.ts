@@ -15,7 +15,7 @@ export const TIMELINE: TimelineEntry[] = [
   {
     year: '1969',
     title: 'AFC Japan berdiri',
-    body: 'Menurut materi AFC, AFC Japan berdiri sejak 1969 sebagai perusahaan farmasi — disebut salah satu yang tertua dan terbesar di Jepang, dengan kantor pusat di Shizuoka.',
+    body: 'AFC Japan berdiri sejak 1969 di Shizuoka sebagai perusahaan farmasi — menurut AFC, salah satu yang tertua dan terbesar di Jepang.',
     kind: 'company',
     source: 'AFC-SRC-56',
     image: ASSETS.company.building,
@@ -23,14 +23,14 @@ export const TIMELINE: TimelineEntry[] = [
   {
     year: 'GMP',
     title: 'Standar produksi',
-    body: 'Materi AFC menyebut AFC sebagai pabrik farmasi Jepang pertama yang mendapatkan sertifikat GMP.',
+    body: 'Menurut AFC, pabrik farmasi Jepang pertama yang mendapatkan sertifikat GMP.',
     kind: 'company',
     source: 'AFC-SRC-56',
   },
   {
     year: 'TSE 2927',
     title: 'Tercatat di Tokyo Stock Exchange',
-    body: 'AFC-HD AMS Life Science Co., Ltd. tercatat di Tokyo Stock Exchange dengan kode 2927. Materi AFC menyebutnya perusahaan farmasi pertama yang terdaftar di bursa tersebut.',
+    body: 'AFC-HD AMS Life Science Co., Ltd. tercatat di Tokyo Stock Exchange dengan kode 2927.',
     kind: 'company',
     source: 'AFC-SRC-59',
   },

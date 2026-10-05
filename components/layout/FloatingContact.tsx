@@ -5,11 +5,14 @@ import { useEffect, useState } from 'react';
 import { WHATSAPP_MESSAGES } from '@/config/site';
 import { cx } from '@/lib/cx';
 import { getWhatsAppUrl } from '@/lib/whatsapp';
+import { contextualWhatsAppMessage } from '@/lib/whatsappContext';
 import { WhatsAppIcon } from '../ui/Icons';
 
 /**
- * One unobtrusive global contact action. It appears after the first screen
- * and steps aside whenever a full contact section is on screen.
+ * The one global contact action: a slim bar at the thumb on phones, a pill
+ * on larger screens. It appears after the first screen, carries the current
+ * product in its message, and steps aside whenever a full contact section is
+ * on screen.
  */
 export function FloatingContact() {
   const pathname = usePathname();
@@ -17,15 +20,7 @@ export function FloatingContact() {
   const [message, setMessage] = useState<string>(WHATSAPP_MESSAGES.general);
 
   useEffect(() => {
-    const productName = document.querySelector<HTMLElement>('[data-product-name]')?.dataset.productName;
-    const isOpportunity = Boolean(document.querySelector('[data-whatsapp-context="opportunity"]'));
-    setMessage(
-      productName
-        ? WHATSAPP_MESSAGES.product(productName)
-        : isOpportunity
-          ? WHATSAPP_MESSAGES.opportunity
-          : WHATSAPP_MESSAGES.general,
-    );
+    setMessage(contextualWhatsAppMessage());
 
     const blockers = new Set<Element>();
     const io = new IntersectionObserver((entries) => {

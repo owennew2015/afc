@@ -32,8 +32,10 @@ export function Footer() {
       </div>
       <div className="container footer__legal">
         <p>
-          Informasi produk bersumber dari materi AFC. Produk-produk ini bukan obat dan tidak dimaksudkan untuk
-          mendiagnosis, mengobati, atau menyembuhkan penyakit. Konsultasikan kondisi kesehatan dengan tenaga medis.
+          Informasi produk bersumber dari materi AFC; sebagian merupakan pernyataan perusahaan yang belum tentu
+          diverifikasi pihak independen, dan testimoni adalah pengalaman pribadi. Produk-produk ini bukan obat dan tidak
+          dimaksudkan untuk mendiagnosis, mengobati, atau menyembuhkan penyakit. Konsultasikan kondisi kesehatan dengan
+          tenaga medis.
         </p>
         <p>Copyright © {new Date().getFullYear()} AFC Lifescience</p>
       </div>

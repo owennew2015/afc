@@ -4,7 +4,6 @@ import { LocationCard } from '@/components/sections/LocationCard';
 import { PageIntro } from '@/components/sections/PageIntro';
 import { Timeline } from '@/components/sections/Timeline';
 import { WhatsAppCTA } from '@/components/sections/WhatsAppCTA';
-import { ClaimLabel } from '@/components/ui/ClaimLabel';
 import { Reveal } from '@/components/ui/Reveal';
 import { SafeImage } from '@/components/ui/SafeImage';
 import { SourceMaterial } from '@/components/ui/SourceMaterial';
@@ -39,11 +38,10 @@ export default function AboutPage() {
             </p>
             <Reveal className="prose">
               <p>
-                Menurut materi AFC, AFC Japan berdiri sejak 1969 sebagai perusahaan farmasi — salah satu yang tertua dan
-                terbesar di Jepang — dan merupakan perusahaan farmasi pertama yang terdaftar di Tokyo Stock Exchange
-                serta pabrik farmasi Jepang pertama yang mendapatkan sertifikat GMP.
+                AFC Japan berdiri sejak 1969 di Shizuoka sebagai perusahaan farmasi. Menurut AFC, ia termasuk yang tertua
+                dan terbesar di Jepang, perusahaan farmasi pertama yang terdaftar di Tokyo Stock Exchange, dan pabrik
+                farmasi Jepang pertama yang mendapatkan sertifikat GMP.
               </p>
-              <ClaimLabel kind="company" />
             </Reveal>
           </div>
         </div>

@@ -11,9 +11,7 @@ export function KenaliSection() {
       <div className="container">
         <div className="kenali__intro">
           <Reveal className="kenali__copy">
-            <p className="eyebrow">
-              <span className="section-head__index">01</span> AFC
-            </p>
+            <p className="eyebrow">Tentang AFC</p>
             <h2 id="kenali-title">Kenali AFC</h2>
             <p className="kenali__year serif" aria-hidden="true">
               1969
@@ -28,7 +26,6 @@ export function KenaliSection() {
           </Reveal>
           <Reveal className="kenali__media" variant="mask">
             <SafeImage asset={ASSETS.company.building} sizes="(min-width: 1024px) 640px, 100vw" />
-            <p className="source-ref">Gedung AFC di Jepang · {ASSETS.company.building.source}</p>
           </Reveal>
         </div>
 

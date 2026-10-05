@@ -21,7 +21,6 @@ export function SourceMaterial({ items, label = 'Lihat materi asli' }: { items: 
             <figcaption>
               <strong>{item.title}</strong>
               <span>{item.caption}</span>
-              <span className="source-ref">Sumber: {item.asset.source}</span>
             </figcaption>
           </figure>
         ))}

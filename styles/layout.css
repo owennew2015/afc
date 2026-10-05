@@ -1,4 +1,4 @@
-/* Global shell: header, menu, explorer, loader, floating contact, CTA, footer. */
+/* Global shell: header, menu, loader, floating contact, CTA, footer. */
 
 /* Logo */
 .afc-logo {
@@ -184,15 +184,7 @@
 .menu__link:hover {
   padding-left: 6px;
 }
-.menu__num {
-  flex: none;
-  width: 2.2em;
-  font-family: var(--font-body);
-  font-size: var(--fs-xs);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-}
+
 .menu__foot {
   display: grid;
   gap: var(--s-3);
@@ -230,119 +222,6 @@
   border-radius: 50%;
   border: 1.5px solid currentColor;
   background: linear-gradient(90deg, currentColor 50%, transparent 50%);
-}
-
-/* AFC Explorer */
-.explorer {
-  position: fixed;
-  z-index: 40;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity var(--t-med) var(--ease-out);
-}
-.explorer--visible {
-  opacity: 1;
-}
-.explorer__title,
-.explorer__list {
-  display: none;
-}
-.explorer__compact {
-  position: fixed;
-  top: calc(env(safe-area-inset-top) + var(--header-h) / 2);
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  gap: 6px;
-  align-items: baseline;
-  margin: 0;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  white-space: nowrap;
-}
-.explorer__compact .explorer__num {
-  color: var(--gold);
-}
-.explorer__sep {
-  opacity: 0.6;
-}
-@media (min-width: 1024px) {
-  .explorer {
-    right: max(16px, calc((100vw - var(--max)) / 2 - 120px));
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .explorer__compact {
-    display: none;
-  }
-  .explorer__title {
-    display: block;
-    margin-bottom: 12px;
-    font-size: 0.625rem;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .explorer__list {
-    display: grid;
-    gap: 2px;
-    list-style: none;
-    pointer-events: auto;
-  }
-  .explorer__item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-height: 28px;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--muted);
-    transition: color var(--t-fast);
-  }
-  .explorer__item .explorer__num {
-    position: relative;
-    padding-left: 18px;
-  }
-  .explorer__item .explorer__num::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 10px;
-    height: 1px;
-    background: currentColor;
-    transition: width var(--t-med) var(--ease-out);
-  }
-  .explorer__label {
-    opacity: 0;
-    transform: translateX(-4px);
-    transition: opacity var(--t-fast), transform var(--t-fast);
-  }
-  .explorer__item.is-active,
-  .explorer__item:hover {
-    color: var(--ink);
-  }
-  .explorer__item.is-active .explorer__num::before {
-    width: 14px;
-    background: var(--gold);
-  }
-  .explorer__item.is-active .explorer__label,
-  .explorer__item:hover .explorer__label {
-    opacity: 1;
-    transform: none;
-  }
-}
-@media (min-width: 1024px) and (max-width: 1439px) {
-  .explorer {
-    right: 14px;
-  }
 }
 
 /* Loading intro */
@@ -401,24 +280,38 @@
 .floating-contact {
   position: fixed;
   z-index: 45;
-  right: max(14px, env(safe-area-inset-right));
-  bottom: calc(14px + env(safe-area-inset-bottom));
-  display: inline-flex;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  min-height: 48px;
-  padding: 0 18px 0 14px;
-  border-radius: var(--r-pill);
+  justify-content: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
   background: var(--ink);
   color: var(--bg);
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   font-weight: 600;
   text-decoration: none;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 -8px 24px -12px rgba(0, 0, 0, 0.35);
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(100%);
   pointer-events: none;
   transition: opacity var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out);
+}
+@media (min-width: 720px) {
+  .floating-contact {
+    left: auto;
+    right: max(18px, env(safe-area-inset-right));
+    bottom: calc(18px + env(safe-area-inset-bottom));
+    min-height: 48px;
+    padding: 0 20px 0 16px;
+    border-radius: var(--r-pill);
+    font-size: var(--fs-sm);
+    box-shadow: var(--shadow-md);
+    transform: translateY(16px);
+  }
 }
 .floating-contact svg {
   width: 20px;

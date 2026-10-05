@@ -79,8 +79,13 @@ To follow the content policy in the build brief (no disease or cure claims, test
 
 ### Content still needed
 
-- Product prices (shows "Harga akan ditambahkan")
-- Usage instructions (shows a placeholder)
-- Hikari net weight and sachet count (not legible in the source)
+Optional fields that are empty are not rendered. That means no placeholders appear, but these sections stay hidden until the content is filled in:
+
+- Product prices (`price`). Until set, the summary button reads "Tanya harga & pesan".
+- Usage instructions (`usage`)
+- Hikari contents and BPOM number (`contents`, `bpom`), which aren't legible in the source
+- Testimonials (`data/stories.ts`)
 - The real WhatsApp number
 - Legal and company details for the footer
+
+The BPOM numbers for SOP Subarashi and Utsukushhii were read from the pack photos. Check them against the physical packaging before launch.

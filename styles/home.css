@@ -63,7 +63,7 @@
 
 .hero__stage {
   position: relative;
-  height: clamp(200px, 38svh, 340px);
+  height: clamp(170px, 34svh, 330px);
   margin-inline: calc(var(--gutter) * -0.25);
 }
 .hero__pack {
@@ -469,18 +469,10 @@
 }
 .opp-preview__tiers li {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr;
   gap: 2px var(--s-4);
   padding-block: var(--s-5);
   border-bottom: 1px solid var(--line);
-}
-.opp-preview__num {
-  grid-row: span 2;
-  font-family: var(--font-display);
-  font-weight: var(--fw-display);
-  font-size: var(--fs-h3);
-  color: var(--gold);
-  line-height: 1;
 }
 .opp-preview__name {
   font-family: var(--font-display);

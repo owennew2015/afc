@@ -14,23 +14,23 @@ export const hikari: Product = {
     'Minuman serbuk dengan Triple Vegan Peptides — marigold, spearmint, dan mango leaf — serta ekstrak buah beri.',
   whatIs: [
     'Hikari adalah minuman serbuk buatan Jepang dalam kemasan sachet.',
-    'Materi AFC memperkenalkan Triple Vegan Peptides — marigold, spearmint, dan mango leaf peptide — dengan ukuran yang disebut “nano sized 400 Dalton”.',
+    'Intinya adalah Triple Vegan Peptides — marigold, spearmint, dan mango leaf peptide — berukuran nano 400 Dalton menurut AFC.',
     'Peptida tersebut dipadukan dengan ekstrak acerola, blueberry, cherry, blackcurrant, lingonberry, dan strawberry, serta inulin dan L-cysteine.',
   ],
-  positioning: 'Produk peptida nabati AFC. Materi AFC mengaitkan Hikari dengan topik otak dan mata.',
+  positioning: 'Produk peptida nabati AFC, dengan ekstrak buah beri dan buah merah.',
   positioningPoints: [
     'Triple Vegan Peptides',
-    '“Nano sized 400 Dalton” menurut materi AFC',
+    'Ukuran nano 400 Dalton',
     'Ekstrak buah beri dan buah merah',
     'Made in Japan',
   ],
   format: 'Minuman serbuk · kemasan sachet',
+  contents: null,
+  bpom: null,
   packaging: [
     { label: 'Jenis produk', value: 'Minuman serbuk', kind: 'documented', source: 'AFC-SRC-38' },
-    { label: 'Isi', value: null, kind: 'documented', source: 'AFC-SRC-38' },
     { label: 'Asal', value: 'Made in Japan | 日本製', kind: 'documented', source: 'AFC-SRC-38' },
     { label: 'Diimpor oleh', value: 'PT H&E Dermatech Indonesia, Tangerang', kind: 'documented', source: 'AFC-SRC-38' },
-    { label: 'Izin edar', value: 'Nomor BPOM tercantum pada kemasan', kind: 'documented', source: 'AFC-SRC-38' },
   ],
   price: null,
   usage: null,
@@ -42,7 +42,7 @@ export const hikari: Product = {
   ingredientGroups: [
     {
       title: 'Triple Vegan Peptides',
-      summary: 'Tiga peptida nabati, “nano sized 400 Dalton” menurut materi AFC.',
+      summary: 'Tiga peptida nabati berukuran nano 400 Dalton.',
       items: [
         { name: 'Marigold Peptide', image: img('marigold-peptide', 'Marigold Peptide') },
         { name: 'Spearmint Peptide', image: img('spearmint-peptide', 'Spearmint Peptide') },
@@ -71,13 +71,13 @@ export const hikari: Product = {
   technology: [
     {
       title: 'Triple Vegan Peptides',
-      body: 'Materi AFC menyebut tiga peptida nabati — marigold, spearmint, dan mango leaf — sebagai inti Hikari.',
+      body: 'Tiga peptida nabati — marigold, spearmint, dan mango leaf — menjadi inti Hikari.',
       kind: 'company',
       source: 'AFC-SRC-41',
     },
     {
       title: 'Nano sized 400 Dalton',
-      body: 'Materi AFC menyebut ukuran peptida Hikari sebagai “nano sized 400 Dalton”. Dalton adalah satuan massa molekul.',
+      body: 'AFC menyebut peptida Hikari berukuran nano 400 Dalton. Dalton adalah satuan massa molekul.',
       kind: 'company',
       source: 'AFC-SRC-41',
     },
@@ -89,8 +89,6 @@ export const hikari: Product = {
     { number: 'US10537604' },
     { number: 'EP3538085B1' },
   ],
-  patentNote:
-    'Materi AFC berjudul “Hikari Patents” mencantumkan lima paten dan mengaitkannya dengan topik performa visual, paparan blue light, memori, fungsi otak, dan neurogenesis. Paten melindungi komposisi atau metode tertentu; paten bukan izin edar dan bukan bukti klinis atas manfaat produk. Judul dan cakupan setiap paten dapat diperiksa di basis data paten publik.',
   supportingMaterial: [
     { title: 'Triple Vegan Peptides', caption: 'Materi asli AFC tentang tiga peptida nabati.', asset: ASSETS.products.hikariPeptides },
     { title: 'Ringkasan bahan', caption: 'Materi asli AFC: peptida dan ekstrak buah Hikari.', asset: ASSETS.products.hikariIngredients },

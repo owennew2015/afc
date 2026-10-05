@@ -36,17 +36,17 @@ export function ProductHero({ product }: { product: Product }) {
           <p className="p-hero__tagline">{product.tagline}</p>
           <p className="p-hero__lede">{product.shortDescription}</p>
           <div className="btn-row">
-            <a href="#apa-ini" className={cx('btn', product.theme.dark && 'btn--light')}>
-              Pelajari lebih lanjut
-            </a>
             <a
               href={getWhatsAppUrl(WHATSAPP_MESSAGES.product(product.name))}
-              className={cx('btn', product.theme.dark ? 'btn--light-ghost' : 'btn--ghost')}
+              className={cx('btn', product.theme.dark && 'btn--light')}
               target="_blank"
               rel="noopener noreferrer"
             >
               <WhatsAppIcon />
               Hubungi Konsultan
+            </a>
+            <a href="#ringkasan" className={cx('btn', product.theme.dark ? 'btn--light-ghost' : 'btn--ghost')}>
+              Lihat harga & isi
             </a>
           </div>
         </div>

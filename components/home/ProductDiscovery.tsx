@@ -7,7 +7,6 @@ export function ProductDiscovery() {
   return (
     <div className="container">
       <SectionHeading
-        index="02"
         eyebrow="Produk"
         title="Tiga Produk. Tiga Karakter."
         lede="Masing-masing dengan bahan dan karakternya sendiri. Pilih satu untuk mulai menjelajah."

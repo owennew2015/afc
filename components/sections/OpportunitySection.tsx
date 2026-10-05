@@ -88,7 +88,7 @@ export function OpportunitySection() {
 
             <Reveal className="bonus__block">
               <h3 className="bonus__title">Bonus pass up</h3>
-              <p className="bonus__desc">Selisih bonus sponsor diteruskan ke sponsor berpaket lebih tinggi. Contoh dari materi AFC:</p>
+              <p className="bonus__desc">Selisih bonus sponsor diteruskan ke sponsor berpaket lebih tinggi. Contohnya:</p>
               <ol className="passup">
                 {PASS_UP_STEPS.map((s) => (
                   <li key={s}>{s}</li>

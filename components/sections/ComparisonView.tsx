@@ -10,13 +10,13 @@ import { worldStyle } from '../product/worldStyle';
 
 const CATEGORIES: { id: string; label: string; value: (p: Product) => string }[] = [
   { id: 'positioning', label: 'Positioning', value: (p) => p.positioning },
-  { id: 'ingredients', label: 'Bahan utama', value: (p) => p.ingredientGroups[0].items.map((i) => i.name).join(', ') },
+  { id: 'ingredients', label: 'Bahan utama', value: (p) => p.highlightIngredients.join(', ') },
   { id: 'format', label: 'Format', value: (p) => p.format },
-  { id: 'price', label: 'Harga', value: (p) => p.price ?? 'Harga akan ditambahkan' },
+  { id: 'price', label: 'Harga', value: (p) => p.price ?? 'Tanyakan via WhatsApp' },
   {
     id: 'key',
     label: 'Informasi kunci',
-    value: (p) => `Made in Japan · Sertifikat halal · ${p.patents.length} paten dirujuk materi AFC`,
+    value: (p) => ['Made in Japan', 'Halal', p.bpom].filter(Boolean).join(' · '),
   },
 ];
 

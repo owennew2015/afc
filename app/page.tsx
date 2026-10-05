@@ -1,4 +1,3 @@
-import { AFCExplorer } from '@/components/layout/AFCExplorer';
 import { HeroSection } from '@/components/home/HeroSection';
 import { KenaliSection } from '@/components/home/KenaliSection';
 import { OpportunityPreview } from '@/components/home/OpportunityPreview';
@@ -10,23 +9,23 @@ import { TemukanSection } from '@/components/home/TemukanSection';
 import { WhatsAppCTA } from '@/components/sections/WhatsAppCTA';
 import { PRODUCTS } from '@/data/products';
 
+/** Buyer's order: what is it → which one is mine → can I trust it → how do I get it. */
 export default function HomePage() {
   return (
     <>
-      <AFCExplorer />
       <HeroSection />
-      <KenaliSection />
       <section id="produk" className="section produk" aria-label="Produk AFC">
         <ProductDiscovery />
-        <div className="story-bands">
-          {PRODUCTS.map((p, i) => (
-            <ProductStory key={p.slug} product={p} index={i} />
-          ))}
-        </div>
       </section>
+      <TemukanSection />
+      <div className="story-bands">
+        {PRODUCTS.map((p, i) => (
+          <ProductStory key={p.slug} product={p} index={i} />
+        ))}
+      </div>
+      <KenaliSection />
       <QualityPreview />
       <StoriesPreview />
-      <TemukanSection />
       <OpportunityPreview />
       <WhatsAppCTA
         title="Ingin tahu lebih banyak?"

@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { WHATSAPP_MESSAGES } from '@/config/site';
 import { MENU_LINKS } from '@/data/navigation';
 import { cx } from '@/lib/cx';
 import { getWhatsAppUrl } from '@/lib/whatsapp';
+import { contextualWhatsAppMessage } from '@/lib/whatsappContext';
 import { CloseIcon, WhatsAppIcon } from '../ui/Icons';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -19,6 +20,7 @@ export function AFCMenu({ open, onClose }: AFCMenuProps) {
   const pathname = usePathname();
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const [message, setMessage] = useState<string>(WHATSAPP_MESSAGES.general);
 
   useEffect(() => {
     if (panelRef.current) panelRef.current.inert = !open;
@@ -26,6 +28,7 @@ export function AFCMenu({ open, onClose }: AFCMenuProps) {
 
   useEffect(() => {
     if (!open) return;
+    setMessage(contextualWhatsAppMessage());
     const previouslyFocused = document.activeElement as HTMLElement | null;
     document.body.classList.add('is-locked');
     closeRef.current?.focus();
@@ -83,15 +86,14 @@ export function AFCMenu({ open, onClose }: AFCMenuProps) {
                 aria-current={pathname === link.href ? 'page' : undefined}
                 onClick={onClose}
               >
-                <span className="menu__num">{String(i + 1).padStart(2, '0')}</span>
-                <span>{link.label}</span>
+                {link.label}
               </Link>
             </li>
           ))}
         </ol>
       </nav>
       <div className="menu__foot">
-        <a className="btn btn--block" href={getWhatsAppUrl(WHATSAPP_MESSAGES.general)} target="_blank" rel="noopener noreferrer">
+        <a className="btn btn--block" href={getWhatsAppUrl(message)} target="_blank" rel="noopener noreferrer">
           <WhatsAppIcon />
           Hubungi Konsultan
         </a>

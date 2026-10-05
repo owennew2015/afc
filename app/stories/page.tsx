@@ -7,7 +7,7 @@ import { WhatsAppCTA } from '@/components/sections/WhatsAppCTA';
 import { Reveal } from '@/components/ui/Reveal';
 import { SafeImage } from '@/components/ui/SafeImage';
 import { ASSETS } from '@/data/assets';
-import { COMMUNITY_STORIES, EXPERT_MATERIAL } from '@/data/stories';
+import { COMMUNITY_STORIES, EXPERT_MATERIAL, TESTIMONIALS } from '@/data/stories';
 
 export const metadata: Metadata = {
   title: 'Cerita',
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function StoriesPage() {
   return (
     <>
-      <PageIntro eyebrow="Cerita" title="Cerita dari mereka" lede="Dari komunitas yang dibangun AFC Care, hingga orang-orang di balik materi AFC." />
+      <PageIntro eyebrow="Cerita" title="Cerita dari mereka" lede="Dari komunitas yang dibangun AFC Care, hingga orang-orang yang mengenal produk AFC." />
 
       <section className="section section--tight" aria-labelledby="care-title">
         <div className="container">
@@ -59,6 +59,7 @@ export default function StoriesPage() {
         </div>
       </section>
 
+      {TESTIMONIALS.length > 0 && (
       <section className="section" aria-labelledby="testi-title">
         <div className="container">
           <h2 id="testi-title" className="block-title">
@@ -71,6 +72,7 @@ export default function StoriesPage() {
           <TestimonialArchive />
         </div>
       </section>
+      )}
 
       <WhatsAppCTA />
     </>

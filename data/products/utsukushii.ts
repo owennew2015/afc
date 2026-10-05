@@ -14,17 +14,19 @@ export const utsukushii: Product = {
     'Minuman serbuk rasa anggur dengan bakteri asam laktat, Takara kombu fucoidan, dan salmon DNA.',
   whatIs: [
     'Utsukushhii 2.0 adalah minuman serbuk rasa anggur buatan Jepang, dikemas dalam 28 sachet.',
-    'Materi AFC menyorot lima bahan inti — Lactococcus lactis, lactic acid bacteria, Bifidobacterium longum, Takara kombu fucoidan, dan salmon DNA — dengan ukuran yang disebut “nano sized 800 Dalton”.',
+    'Lima bahan intinya — Lactococcus lactis, lactic acid bacteria, Bifidobacterium longum, Takara kombu fucoidan, dan salmon DNA — berukuran nano 800 Dalton menurut AFC.',
     'Versi 2.0 Gold Version menambahkan black garlic (kuro ninniku), kiwi seed extract, L-glutathione, resveratrol, vitamin D, pineapple extract, dan fish collagen.',
   ],
   positioning: 'Produk beauty & wellness AFC: bakteri asam laktat, fucoidan dari kombu, dan DNA salmon.',
   positioningPoints: [
     'Lima bahan inti dalam satu produk',
-    '“Nano sized 800 Dalton” menurut materi AFC',
+    'Ukuran nano 800 Dalton',
     'Versi 2.0 Gold dengan tujuh bahan tambahan',
     'Made in Japan',
   ],
   format: 'Minuman serbuk rasa anggur · 28 sachet',
+  contents: '28 sachet @ 2,5 g',
+  bpom: 'BPOM RI ML 867031004482',
   packaging: [
     { label: 'Jenis produk', value: 'Minuman serbuk rasa anggur (ぶどう風味)', kind: 'documented', source: 'AFC-SRC-25' },
     { label: 'Isi', value: '28 sachet @ 2,5 g', kind: 'documented', source: 'AFC-SRC-25' },
@@ -35,7 +37,6 @@ export const utsukushii: Product = {
       kind: 'documented',
       source: 'AFC-SRC-25',
     },
-    { label: 'Izin edar', value: 'Nomor BPOM tercantum pada kemasan', kind: 'documented', source: 'AFC-SRC-25' },
   ],
   price: null,
   usage: null,
@@ -47,7 +48,7 @@ export const utsukushii: Product = {
   ingredientGroups: [
     {
       title: 'Lima bahan inti',
-      summary: 'Disebut “Powerful Ingredients” dalam materi AFC, dengan ukuran “nano sized 800 Dalton”.',
+      summary: '“Powerful Ingredients” Utsukushhii, berukuran nano 800 Dalton.',
       items: [
         { name: 'Lactococcus lactis', image: core('lactococcus-lactis', 'Lactococcus lactis') },
         { name: 'Lactic Acid Bacteria', image: core('lactic-acid-bacteria', 'Lactic Acid Bacteria') },
@@ -58,7 +59,7 @@ export const utsukushii: Product = {
     },
     {
       title: 'Tambahan 2.0 Gold Version',
-      summary: 'Bahan yang tercantum pada materi Utsukushhii 2.0 Gold Version.',
+      summary: 'Bahan tambahan pada versi 2.0 Gold.',
       items: [
         { name: 'Black Garlic (Kuro Ninniku)', image: core('black-garlic', 'Black Garlic') },
         { name: 'Kiwi Seed Extract', image: core('kiwi-seed-extract', 'Kiwi Seed Extract') },
@@ -73,13 +74,13 @@ export const utsukushii: Product = {
   technology: [
     {
       title: 'Lima bahan inti',
-      body: 'Materi AFC mengelompokkan Lactococcus lactis, lactic acid bacteria, dan Bifidobacterium longum bersama Takara kombu fucoidan dan salmon DNA sebagai bahan utama Utsukushhii.',
+      body: 'Tiga bakteri asam laktat — Lactococcus lactis, lactic acid bacteria, dan Bifidobacterium longum — bersama Takara kombu fucoidan dan salmon DNA.',
       kind: 'company',
       source: 'AFC-SRC-26',
     },
     {
       title: 'Nano sized 800 Dalton',
-      body: 'Materi AFC menyebut ukuran bahan Utsukushhii sebagai “nano sized 800 Dalton”. Dalton adalah satuan massa molekul.',
+      body: 'AFC menyebut bahan Utsukushhii berukuran nano 800 Dalton. Dalton adalah satuan massa molekul.',
       kind: 'company',
       source: 'AFC-SRC-26',
     },
@@ -94,8 +95,6 @@ export const utsukushii: Product = {
     { number: 'JP-5697788B1' },
     { number: 'JP-3040699B2' },
   ],
-  patentNote:
-    'Materi AFC berjudul “Patents of Utsukushhii Gold” mencantumkan delapan nomor paten berikut. Paten melindungi komposisi atau metode tertentu; paten bukan izin edar dan bukan bukti klinis atas manfaat produk. Judul dan cakupan setiap paten dapat diperiksa di basis data paten publik.',
   supportingMaterial: [
     { title: 'Powerful Ingredients', caption: 'Materi asli AFC tentang lima bahan inti.', asset: ASSETS.products.utsukushiiCore },
     { title: '2.0 Gold Version', caption: 'Materi asli AFC: bahan Utsukushhii 2.0 Gold Version.', asset: ASSETS.products.utsukushiiIngredients },

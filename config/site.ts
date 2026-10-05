@@ -21,4 +21,6 @@ export const WHATSAPP_MESSAGES = {
   general: 'Halo, saya ingin mengetahui lebih lanjut tentang produk AFC.',
   opportunity: 'Halo, saya ingin mengetahui lebih lanjut tentang peluang menjadi bagian dari AFC.',
   product: (name: string) => `Halo, saya ingin mengetahui lebih lanjut tentang ${name}.`,
+  interest: (interest: string, product: string) =>
+    `Halo, saya tertarik dengan ${interest} dan ingin mengetahui lebih lanjut tentang ${product}.`,
 } as const;

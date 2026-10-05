@@ -4,7 +4,6 @@ import { Reveal } from './Reveal';
 
 interface SectionHeadingProps {
   eyebrow?: string;
-  index?: string;
   title: ReactNode;
   lede?: ReactNode;
   center?: boolean;
@@ -12,15 +11,10 @@ interface SectionHeadingProps {
   id?: string;
 }
 
-export function SectionHeading({ eyebrow, index, title, lede, center, as: Tag = 'h2', id }: SectionHeadingProps) {
+export function SectionHeading({ eyebrow, title, lede, center, as: Tag = 'h2', id }: SectionHeadingProps) {
   return (
     <Reveal className={cx('section-head', center && 'section-head--center')}>
-      {(eyebrow || index) && (
-        <p className="eyebrow">
-          {index && <span className="section-head__index">{index}</span>}
-          {eyebrow}
-        </p>
-      )}
+      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
       <Tag id={id}>{title}</Tag>
       {lede && <p className="lede">{lede}</p>}
     </Reveal>

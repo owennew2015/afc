@@ -54,14 +54,6 @@ export const SAFETY_NATURAL = ['No preservatives', 'No artificial flavor', 'No a
 export const SAFETY_STATEMENT =
   'Setiap produk dari AFC mendapatkan sertifikat bebas antibiotik, pestisida, logam berat, kimia berbahaya, hormon, dan bebas dari pencemaran radiasi nuklir (dokumen tersedia).';
 
-/** BPOM numbers exactly as listed in the source, which does not map them to products. */
-export const BPOM_NUMBERS = [
-  'BPOM RI ML 830531001482',
-  'BPOM RI ML 867031004482',
-  'BPOM RI ML 830531010482',
-  'BPOM RI NA 2220200005',
-];
-
 export interface Award {
   year: string;
   title: string;
@@ -139,7 +131,7 @@ export const TRUST_STEPS: TrustStep[] = [
   {
     label: 'Pengembangan',
     title: 'Made in Japan',
-    body: 'Ketiga produk diproduksi di Jepang. Materi AFC merujuk paten terkait bahan untuk setiap produk.',
+    body: 'Ketiga produk diproduksi di Jepang, dengan paten terkait bahan untuk setiap produk.',
     kind: 'documented',
     href: '/products',
   },
@@ -153,7 +145,7 @@ export const TRUST_STEPS: TrustStep[] = [
   {
     label: 'Kualitas',
     title: 'Diuji laboratorium',
-    body: 'Materi AFC menyebut pengujian logam berat, bahan kimia berbahaya, DNA babi, dan non-GMO.',
+    body: 'Diuji untuk logam berat, bahan kimia berbahaya, DNA babi, dan non-GMO.',
     kind: 'company',
     href: '/quality',
   },

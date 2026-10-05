@@ -11,7 +11,6 @@ export function QualityPreview() {
       <div className="container">
         <SectionHeading
           id="kualitas-title"
-          index="03"
           eyebrow="Kualitas"
           title="Kenali apa yang ada di balik produk."
           lede="Dari AFC Japan hingga sertifikat — setiap langkah dengan dokumennya."

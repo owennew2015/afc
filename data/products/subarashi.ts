@@ -14,7 +14,7 @@ export const subarashi: Product = {
     'Minuman serbuk sereal rasa yoghurt dari Jepang dengan Hexa Peptide — enam peptida dalam satu produk.',
   whatIs: [
     'SOP Subarashi adalah minuman serbuk sereal rasa yoghurt buatan Jepang, dikemas dalam 28 sachet @ 3,5 g.',
-    'Materi AFC memperkenalkannya lewat konsep Hexa Peptide: enam peptida dalam satu produk, dilengkapi hyaluronic acid, chondroitin, nucleic acid, elastin, L-glutathione, dan asam amino.',
+    'Intinya adalah Hexa Peptide — enam peptida dalam satu produk — dilengkapi hyaluronic acid, chondroitin, nucleic acid, elastin, L-glutathione, dan asam amino.',
   ],
   positioning: 'Produk peptida AFC: Hexa Peptide dari sumber laut dan nabati, dalam satu sachet.',
   positioningPoints: [
@@ -24,6 +24,8 @@ export const subarashi: Product = {
     'Monde Selection 2021 — Bronze Quality Award',
   ],
   format: 'Minuman serbuk sereal rasa yoghurt · 28 sachet',
+  contents: '98 g (28 sachet @ 3,5 g)',
+  bpom: 'BPOM RI ML 243135000300302',
   packaging: [
     { label: 'Jenis produk', value: 'Minuman serbuk sereal rasa yoghurt', kind: 'documented', source: 'AFC-SRC-09' },
     { label: 'Berat bersih', value: '98 g (28 sachet @ 3,5 g)', kind: 'documented', source: 'AFC-SRC-09' },
@@ -35,7 +37,6 @@ export const subarashi: Product = {
       kind: 'documented',
       source: 'AFC-SRC-09',
     },
-    { label: 'Izin edar', value: 'Nomor BPOM tercantum pada kemasan', kind: 'documented', source: 'AFC-SRC-09' },
   ],
   price: null,
   usage: null,
@@ -47,7 +48,7 @@ export const subarashi: Product = {
   ingredientGroups: [
     {
       title: 'Hexa Peptide',
-      summary: 'Enam peptida dalam satu produk, sebagaimana disebut dalam materi AFC.',
+      summary: 'Enam peptida dalam satu produk.',
       items: [
         { name: 'Salmon Caviar Peptide', image: img('salmon-caviar-peptide', 'Salmon Caviar Peptide') },
         { name: 'Tuna Heart Peptide', image: img('tuna-heart-peptide', 'Tuna Heart Peptide') },
@@ -57,13 +58,13 @@ export const subarashi: Product = {
         {
           name: 'Fruitflow Vegan Peptide',
           image: img('fruitflow-vegan-peptide', 'Fruitflow Vegan Peptide'),
-          note: 'Materi AFC menyebut klaim Fruitflow telah diotorisasi di Uni Eropa dan diakui oleh European Food Safety Authority (EFSA).',
+          note: 'Menurut AFC, klaim Fruitflow telah diotorisasi di Uni Eropa dan diakui oleh European Food Safety Authority (EFSA).',
         },
       ],
     },
     {
       title: 'Bahan pendukung',
-      summary: 'Bahan lain yang tercantum bersama Hexa Peptide dalam materi produk.',
+      summary: 'Bahan lain yang tercantum bersama Hexa Peptide.',
       items: [
         { name: 'Hyaluronic Acid', image: img('hyaluronic-acid', 'Hyaluronic Acid') },
         { name: 'Chondroitin', image: img('chondroitin', 'Chondroitin') },
@@ -77,13 +78,13 @@ export const subarashi: Product = {
   technology: [
     {
       title: 'Hexa Peptide',
-      body: 'Materi AFC menggambarkan SOP Subarashi sebagai “6 peptides on 1 product”: lima peptida dari sumber laut (salmon, tuna, sardin) dan satu peptida vegan dari Fruitflow.',
+      body: '“6 peptides on 1 product”: lima peptida dari sumber laut (salmon, tuna, sardin) dan satu peptida vegan dari Fruitflow.',
       kind: 'company',
       source: 'AFC-SRC-10',
     },
     {
       title: 'Fruitflow & EFSA',
-      body: 'Materi AFC menyatakan “Claim authorized in the European Union” untuk Fruitflow, dengan keterangan keamanannya diakui oleh European Food Safety Authority. Pernyataan ini berlaku untuk bahan Fruitflow, bukan untuk produk secara keseluruhan.',
+      body: 'Menurut AFC, klaim Fruitflow telah diotorisasi di Uni Eropa dan keamanannya diakui European Food Safety Authority. Ini berlaku untuk bahan Fruitflow, bukan untuk produk secara keseluruhan.',
       kind: 'company',
       source: 'AFC-SRC-13',
     },
@@ -98,8 +99,6 @@ export const subarashi: Product = {
     { number: 'JP4247444B2' },
     { number: 'CN108559764B' },
   ],
-  patentNote:
-    'Materi AFC berjudul “Patents of Subarashi Gold” mencantumkan delapan nomor paten berikut. Paten melindungi komposisi atau metode tertentu; paten bukan izin edar dan bukan bukti klinis atas manfaat produk. Judul dan cakupan setiap paten dapat diperiksa di basis data paten publik.',
   supportingMaterial: [
     { title: 'Hexa Peptide', caption: 'Materi asli AFC tentang enam peptida.', asset: ASSETS.products.subarashiHexa },
     { title: 'Ringkasan bahan', caption: 'Materi asli AFC: peptida dan bahan pendukung.', asset: ASSETS.products.subarashiIngredients },

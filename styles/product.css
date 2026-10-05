@@ -189,42 +189,6 @@
   }
 }
 
-/* ---------- Essential / Deep Dive switch ---------- */
-.layer-switch {
-  border-bottom: 1px solid var(--line);
-  background: var(--bg);
-}
-.layer-switch__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.layer-switch__item {
-  display: grid;
-  gap: 2px;
-  min-height: 72px;
-  align-content: center;
-  padding: var(--s-3) var(--s-3) var(--s-3) 0;
-  text-decoration: none;
-  border-right: 1px solid var(--line);
-}
-.layer-switch__item + .layer-switch__item {
-  padding-left: var(--s-4);
-  border-right: 0;
-}
-.layer-switch__k {
-  font-family: var(--font-display);
-  font-weight: var(--fw-display);
-  font-size: var(--fs-h4);
-  line-height: 1.1;
-}
-.layer-switch__d {
-  font-size: var(--fs-xs);
-  color: var(--muted);
-}
-.layer-switch__item:hover .layer-switch__k {
-  color: var(--gold);
-}
-
 /* ---------- Chapters ---------- */
 .chapter {
   padding-block: clamp(3.5rem, 2.5rem + 5vw, 7rem);
@@ -241,22 +205,11 @@
   background: radial-gradient(100% 70% at 20% 0%, color-mix(in srgb, var(--w-mid) 70%, var(--w-deep)) 0%, var(--w-deep) 75%);
 }
 .chapter__head {
-  display: flex;
-  gap: var(--s-4);
-  align-items: flex-start;
-  margin-bottom: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+  display: grid;
+  gap: 6px;
+  margin-bottom: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem);
 }
-.chapter__num {
-  flex: none;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-style: italic;
-  font-size: var(--fs-h4);
-  color: var(--gold);
-  line-height: 1.6;
-  min-width: 2ch;
-}
-.chapter--deep .chapter__num,
+
 .chapter--deep .chapter__kicker {
   color: var(--w-accent);
 }
@@ -311,18 +264,6 @@
   display: grid;
   gap: 2px;
   font-size: var(--fs-md);
-}
-.facts__src {
-  font-size: var(--fs-xs);
-  color: var(--muted);
-}
-.facts__legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-3);
-  align-items: center;
-  padding-top: var(--s-4);
-  font-size: var(--fs-xs);
 }
 @media (min-width: 720px) {
   .facts__row {
@@ -498,11 +439,6 @@
 .tech p {
   color: var(--ink-soft);
 }
-.tech__meta {
-  display: flex;
-  gap: var(--s-3);
-  align-items: center;
-}
 
 .patents {
   display: grid;
@@ -666,4 +602,97 @@
   .exit__others {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* ---------- Decision summary ---------- */
+.summary {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(-3rem, -2rem - 2vw, -1.5rem);
+  padding-bottom: var(--s-7);
+}
+.summary__card {
+  display: grid;
+  gap: var(--s-5);
+  padding: var(--s-5);
+  border-radius: var(--r-lg);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.35);
+}
+.summary__price {
+  font-family: var(--font-display);
+  font-weight: var(--fw-display);
+  font-size: var(--fs-h2);
+  line-height: 1.1;
+  margin-bottom: var(--s-4);
+}
+.summary__facts {
+  margin: 0;
+  display: grid;
+}
+.summary__facts > div {
+  display: grid;
+  gap: 2px;
+  padding-block: var(--s-3);
+  border-bottom: 1px solid var(--line);
+}
+.summary__facts > div:last-child {
+  border-bottom: 0;
+}
+.summary__facts dt {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 3px;
+}
+.summary__facts dd {
+  margin: 0;
+  font-weight: 500;
+}
+.summary__verify {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+}
+@media (min-width: 480px) {
+  .summary__facts > div {
+    grid-template-columns: 7.5rem 1fr;
+    gap: var(--s-3);
+  }
+}
+.summary__actions {
+  display: grid;
+  gap: var(--s-3);
+  align-content: center;
+  justify-items: center;
+}
+@media (min-width: 900px) {
+  .summary__card {
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--s-7);
+    padding: var(--s-6);
+  }
+  .summary__actions {
+    border-left: 1px solid var(--line);
+    padding-left: var(--s-7);
+  }
+}
+
+/* Supporting ingredients as chips on the deep background */
+.ingredients__group--chips {
+  display: grid;
+  gap: var(--s-3);
+}
+.ingredients__subtitle {
+  font-size: var(--fs-h4);
+}
+.chapter--deep .chip {
+  border-color: color-mix(in srgb, var(--on-dark) 45%, transparent);
+  opacity: 1;
 }

@@ -9,7 +9,6 @@ export function ExpertCard({ expert }: { expert: ExpertMaterial }) {
         <SafeImage asset={expert.asset} sizes="(min-width: 1024px) 560px, 100vw" />
       </div>
       <div className="expert__body">
-        <p className="claim claim--company">Materi pendukung AFC</p>
         <blockquote className="expert__quote serif">“{expert.quote}”</blockquote>
         <figcaption>
           <strong>{expert.name}</strong>
@@ -18,7 +17,7 @@ export function ExpertCard({ expert }: { expert: ExpertMaterial }) {
             {expert.context} {expert.quoteAttribution}
           </span>
           <span className="expert__note">
-            Kutipan ini berasal dari materi promosi, bukan hasil penelitian yang dipublikasikan atau konsensus ilmiah.
+            Kutipan dari materi promosi AFC, bukan hasil penelitian yang dipublikasikan.
           </span>
         </figcaption>
       </div>

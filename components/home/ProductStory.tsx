@@ -20,7 +20,7 @@ export function ProductStory({ product, index }: { product: Product; index: numb
         </Reveal>
         <Reveal className="story-band__copy" delay={120}>
           <p className="story-band__index">
-            {String(index + 1).padStart(2, '0')} · {product.format.split(' · ')[0]}
+            {product.format.split(' · ')[0]}
           </p>
           <h3 id={`story-${product.slug}`} className="story-band__name">
             {product.name}

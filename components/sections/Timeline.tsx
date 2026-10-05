@@ -1,6 +1,5 @@
 import type { TimelineEntry } from '@/data/company';
 import { cx } from '@/lib/cx';
-import { ClaimLabel } from '../ui/ClaimLabel';
 import { Reveal } from '../ui/Reveal';
 import { SafeImage } from '../ui/SafeImage';
 
@@ -14,7 +13,6 @@ export function Timeline({ entries, compact }: { entries: TimelineEntry[]; compa
           <div className="timeline__body">
             <h3 className="timeline__title">{e.title}</h3>
             <p>{e.body}</p>
-            <ClaimLabel kind={e.kind} />
           </div>
           {!compact && e.image && (
             <div className="timeline__media">

@@ -4,12 +4,12 @@ import { CertificateCard } from '@/components/sections/CertificateCard';
 import { PageIntro } from '@/components/sections/PageIntro';
 import { TrustSequence } from '@/components/sections/TrustSequence';
 import { WhatsAppCTA } from '@/components/sections/WhatsAppCTA';
-import { ClaimLabel } from '@/components/ui/ClaimLabel';
 import { Reveal } from '@/components/ui/Reveal';
 import { SafeImage } from '@/components/ui/SafeImage';
 import { SourceMaterial } from '@/components/ui/SourceMaterial';
 import { ASSETS } from '@/data/assets';
-import { AWARDS, BPOM_NUMBERS, CERTIFICATES, SAFETY_NATURAL, SAFETY_STATEMENT, SAFETY_TESTED, TRUST_STEPS } from '@/data/quality';
+import { PRODUCTS } from '@/data/products';
+import { AWARDS, CERTIFICATES, SAFETY_NATURAL, SAFETY_STATEMENT, SAFETY_TESTED, TRUST_STEPS } from '@/data/quality';
 
 export const metadata: Metadata = {
   title: 'Kualitas & Sertifikasi',
@@ -26,30 +26,6 @@ export default function QualityPage() {
         title="Kenali apa yang ada di balik produk."
         lede="Dokumen dan sertifikat sebagaimana dibagikan AFC — dengan penjelasan singkat tentang isinya."
       />
-
-      <section className="section section--tight" aria-labelledby="read-title">
-        <div className="container">
-          <Reveal className="reading-guide">
-            <h2 id="read-title" className="block-title">
-              Cara membaca informasi di situs ini
-            </h2>
-            <ul>
-              <li>
-                <ClaimLabel kind="documented" />
-                <span>Terlihat pada dokumen, sertifikat, atau kemasan dalam materi AFC.</span>
-              </li>
-              <li>
-                <ClaimLabel kind="company" />
-                <span>Pernyataan dari materi promosi AFC. Belum tentu diverifikasi pihak independen.</span>
-              </li>
-              <li>
-                <span className="claim claim--company">Testimoni</span>
-                <span>Pengalaman pribadi pengguna, bukan jaminan hasil.</span>
-              </li>
-            </ul>
-          </Reveal>
-        </div>
-      </section>
 
       <section className="section section--sunken" aria-labelledby="journey-title">
         <div className="container">
@@ -80,7 +56,6 @@ export default function QualityPage() {
               </Reveal>
               <Reveal delay={200} className="safety__statement">
                 <p>“{SAFETY_STATEMENT}”</p>
-                <ClaimLabel kind="company" />
               </Reveal>
             </div>
           </div>
@@ -109,13 +84,19 @@ export default function QualityPage() {
               Izin edar BPOM
             </h2>
             <p className="prose">
-              Materi AFC mencantumkan nomor izin edar berikut. Materi tersebut tidak merinci nomor mana untuk produk
-              mana; nomor pada setiap kemasan adalah acuan yang berlaku.
+              Nomor izin edar sebagaimana tercetak pada kemasan. Kamu bisa memeriksanya sendiri di{' '}
+              <a href="https://cekbpom.pom.go.id/" target="_blank" rel="noopener noreferrer">
+                cekbpom.pom.go.id
+              </a>
+              .
             </p>
           </Reveal>
           <Reveal as="ul" className="bpom-list" delay={120}>
-            {BPOM_NUMBERS.map((n) => (
-              <li key={n}>{n}</li>
+            {PRODUCTS.filter((p) => p.bpom).map((p) => (
+              <li key={p.slug}>
+                <span className="bpom-list__product">{p.name}</span>
+                {p.bpom}
+              </li>
             ))}
           </Reveal>
         </div>

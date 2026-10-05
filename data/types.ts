@@ -87,6 +87,10 @@ export interface Product {
   positioning: string;
   positioningPoints: string[];
   format: string;
+  /** Pack contents, e.g. "28 sachet @ 3,5 g". */
+  contents: string | null;
+  /** BPOM registration number as printed on the pack; null when not legible in the source. */
+  bpom: string | null;
   packaging: Fact[];
   price: string | null;
   usage: string | null;
@@ -99,7 +103,6 @@ export interface Product {
   ingredientGroups: IngredientGroup[];
   technology: TechPoint[];
   patents: Patent[];
-  patentNote: string;
   supportingMaterial: SourceMaterial[];
   awards: string[];
   quality: string[];

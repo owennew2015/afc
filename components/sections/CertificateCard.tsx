@@ -12,7 +12,6 @@ export function CertificateCard({ certificate }: { certificate: Certificate }) {
         <span className="cert-card__cat">{certificate.category}</span>
         <strong className="cert-card__title">{certificate.title}</strong>
         <span className="cert-card__body">{certificate.body}</span>
-        <span className="source-ref">Dokumen asli · {asset.source}</span>
       </figcaption>
     </figure>
   );
