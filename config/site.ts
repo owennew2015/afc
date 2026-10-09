@@ -5,7 +5,7 @@
  * international format without "+" or spaces, e.g. "6281234567890". It can be
  * overridden at build time with NEXT_PUBLIC_WHATSAPP_NUMBER.
  */
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || 'PLACEHOLDER';
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '6285261148800';
 
 export const SITE = {
   name: 'AFC Life Science',

@@ -91,6 +91,8 @@ export interface Product {
   contents: string | null;
   /** BPOM registration number as printed on the pack; null when not legible in the source. */
   bpom: string | null;
+  /** Composition summary as supplied by AFC; shown as "Komposisi" in the summary. */
+  composition: string | null;
   packaging: Fact[];
   price: string | null;
   usage: string | null;

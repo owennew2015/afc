@@ -26,13 +26,15 @@ export const hikari: Product = {
   ],
   format: 'Minuman serbuk · kemasan sachet',
   contents: null,
-  bpom: null,
+  bpom: 'BPOM RI ML 866631003482',
+  composition:
+    'Diformulasikan dengan lutein, vitamin C, vitamin B6, L-cysteine, L-carnitine, inulin, serta campuran ekstrak botani dan bubuk buah beri, termasuk bilberry dan ekstrak mangga.',
   packaging: [
     { label: 'Jenis produk', value: 'Minuman serbuk', kind: 'documented', source: 'AFC-SRC-38' },
     { label: 'Asal', value: 'Made in Japan | 日本製', kind: 'documented', source: 'AFC-SRC-38' },
     { label: 'Diimpor oleh', value: 'PT H&E Dermatech Indonesia, Tangerang', kind: 'documented', source: 'AFC-SRC-38' },
   ],
-  price: null,
+  price: 'Rp 1.800.000',
   usage: null,
   heroAsset: ASSETS.products.hikariPack,
   keyVisual: ASSETS.products.hikariKeyVisual,
@@ -63,6 +65,11 @@ export const hikari: Product = {
     {
       title: 'Bahan lain',
       items: [
+        { name: 'Lutein' },
+        { name: 'Vitamin C' },
+        { name: 'Vitamin B6' },
+        { name: 'L-Carnitine' },
+        { name: 'Bilberry' },
         { name: 'Inulin', image: img('inulin', 'Inulin') },
         { name: 'L-Cysteine', image: img('l-cysteine', 'L-Cysteine') },
       ],

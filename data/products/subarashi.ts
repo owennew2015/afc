@@ -26,6 +26,7 @@ export const subarashi: Product = {
   format: 'Minuman serbuk sereal rasa yoghurt · 28 sachet',
   contents: '98 g (28 sachet @ 3,5 g)',
   bpom: 'BPOM RI ML 243135000300302',
+  composition: null,
   packaging: [
     { label: 'Jenis produk', value: 'Minuman serbuk sereal rasa yoghurt', kind: 'documented', source: 'AFC-SRC-09' },
     { label: 'Berat bersih', value: '98 g (28 sachet @ 3,5 g)', kind: 'documented', source: 'AFC-SRC-09' },
@@ -38,7 +39,7 @@ export const subarashi: Product = {
       source: 'AFC-SRC-09',
     },
   ],
-  price: null,
+  price: 'Rp 2.000.000',
   usage: null,
   heroAsset: ASSETS.products.subarashiPack,
   keyVisual: ASSETS.products.subarashiKeyVisual,

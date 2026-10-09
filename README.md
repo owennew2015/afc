@@ -79,13 +79,11 @@ To follow the content policy in the build brief (no disease or cure claims, test
 
 ### Content still needed
 
-Optional fields that are empty are not rendered. That means no placeholders appear, but these sections stay hidden until the content is filled in:
+Optional fields that are empty are not rendered, so no placeholders appear. These are still open:
 
-- Product prices (`price`). Until set, the summary button reads "Tanya harga & pesan".
-- Usage instructions (`usage`)
-- Hikari contents and BPOM number (`contents`, `bpom`), which aren't legible in the source
+- Usage instructions (`usage`) for all three products
+- Hikari pack contents (`contents`, the net weight and sachet count)
 - Testimonials (`data/stories.ts`)
-- The real WhatsApp number
 - Legal and company details for the footer
 
-The BPOM numbers for SOP Subarashi and Utsukushhii were read from the pack photos. Check them against the physical packaging before launch.
+The BPOM numbers for SOP Subarashi and Utsukushhii were read from the pack photos. Check them against the physical packaging. The WhatsApp number defaults to 6285261148800, and `NEXT_PUBLIC_WHATSAPP_NUMBER` overrides it.

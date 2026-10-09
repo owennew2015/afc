@@ -27,6 +27,7 @@ export const utsukushii: Product = {
   format: 'Minuman serbuk rasa anggur · 28 sachet',
   contents: '28 sachet @ 2,5 g',
   bpom: 'BPOM RI ML 867031004482',
+  composition: null,
   packaging: [
     { label: 'Jenis produk', value: 'Minuman serbuk rasa anggur (ぶどう風味)', kind: 'documented', source: 'AFC-SRC-25' },
     { label: 'Isi', value: '28 sachet @ 2,5 g', kind: 'documented', source: 'AFC-SRC-25' },
@@ -38,7 +39,7 @@ export const utsukushii: Product = {
       source: 'AFC-SRC-25',
     },
   ],
-  price: null,
+  price: 'Rp 1.850.000',
   usage: null,
   heroAsset: ASSETS.products.utsukushiiPack,
   keyVisual: ASSETS.products.utsukushiiKeyVisual,

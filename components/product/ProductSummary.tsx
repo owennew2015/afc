@@ -14,6 +14,7 @@ export function ProductSummary({ product }: { product: Product }) {
   const rows: { label: string; value: React.ReactNode }[] = [];
   if (product.contents) rows.push({ label: 'Isi', value: product.contents });
   rows.push({ label: 'Format', value: product.format.split(' · ')[0] });
+  if (product.composition) rows.push({ label: 'Komposisi', value: product.composition });
   if (product.usage) rows.push({ label: 'Cara konsumsi', value: product.usage });
   if (product.bpom)
     rows.push({
