@@ -4,6 +4,10 @@
 # Usage: scripts/extract-assets.sh path/to/AFC_Website_Asset_Pack_Optimized.pdf
 #
 # Requires poppler-utils (pdfimages) and ImageMagick with WebP support.
+# Optional: set SR_DIR to a folder holding OpenCV EDSR models (EDSR_x2.pb,
+# EDSR_x4.pb) to super-resolve the most visible assets via scripts/sr.py
+# (needs opencv-contrib-python-headless). Without it, assets are extracted
+# at source resolution.
 # Every PDF page holds one 1333x750 slide; pages map to the source-page
 # references (AFC-SRC-xx) listed on the pack's cover page.
 set -euo pipefail
@@ -23,29 +27,50 @@ for f in $(ls "$TMP"/img-* | sort); do
 done
 src() { echo "$TMP/p$1.png"; }
 
+# sr <scale> <in> <out>: EDSR super-resolution, or a Lanczos resize without models.
+sr() {
+  if [ -n "${SR_DIR:-}" ]; then
+    python3 -I "$ROOT/scripts/sr.py" "$SR_DIR" "$1" "$2" "$3"
+  else
+    convert "$2" -filter Lanczos -resize "$(( $1 * 100 ))%" "$3"
+  fi
+}
+
 mkdir -p "$OUT"/{brand,products/{subarashi,utsukushii,hikari},ingredients/{subarashi,utsukushii,hikari},quality,company,awards,stories}
 
-# crop <page> <geometry> <out> [width]
+# crop <page> <geometry> <out> [width] [sr]
 crop() {
-  convert "$(src "$1")" -crop "$2" +repage -resize "${4:-1600}x>" -quality 82 "$OUT/$3.webp"
+  if [ "${5:-}" = sr ]; then
+    convert "$(src "$1")" -crop "$2" +repage "$TMP/c.png"
+    sr 2 "$TMP/c.png" "$TMP/c2.png"
+    convert "$TMP/c2.png" -resize "${4:-1600}x>" -quality 86 "$OUT/$3.webp"
+  else
+    convert "$(src "$1")" -crop "$2" +repage -resize "${4:-1600}x>" -quality 82 "$OUT/$3.webp"
+  fi
 }
 
 # packshot <page> <geometry> <polygon relative to crop> <out>
 # Isolates the packaging from its slide background; the pack itself is untouched.
+# Super-resolved 2x; the polygon is scaled to match.
 packshot() {
-  local g="$2" w="${2%%x*}" h
+  local g="$2" w="${2%%x*}" h poly
   h="${g#*x}"; h="${h%%+*}"
-  convert "$(src "$1")" -crop "$g" +repage \
-    \( -size "${w}x${h}" xc:black -fill white -draw "polygon $3" -blur 0x0.8 \) \
+  poly=$(echo "$3" | tr ' ' '\n' | awk -F, '{printf "%d,%d ", $1*2, $2*2}')
+  convert "$(src "$1")" -crop "$g" +repage "$TMP/pk.png"
+  sr 2 "$TMP/pk.png" "$TMP/pk2.png"
+  convert "$TMP/pk2.png" \
+    \( -size "$((w * 2))x$((h * 2))" xc:black -fill white -draw "polygon $poly" -blur 0x1.4 \) \
     -alpha off -compose CopyOpacity -composite -quality 90 "$OUT/$4.webp"
 }
 
-# circle <page> <cx> <cy> <r> <out>
+# circle <page> <cx> <cy> <r> <out>  (super-resolved 4x, then 192px)
 circle() {
   local d=$(( $4 * 2 ))
-  convert "$(src "$1")" -crop "${d}x${d}+$(( $2 - $4 ))+$(( $3 - $4 ))" +repage -resize 192x192 \
+  convert "$(src "$1")" -crop "${d}x${d}+$(( $2 - $4 ))+$(( $3 - $4 ))" +repage "$TMP/ci.png"
+  sr 4 "$TMP/ci.png" "$TMP/ci4.png"
+  convert "$TMP/ci4.png" -resize 192x192 \
     \( -size 192x192 xc:black -fill white -draw "circle 96,96 96,2" \) \
-    -alpha off -compose CopyOpacity -composite -quality 85 "$OUT/$5.webp"
+    -alpha off -compose CopyOpacity -composite -quality 88 "$OUT/$5.webp"
 }
 
 # Brand: logo on transparent background (shape and colours unchanged).
@@ -93,30 +118,30 @@ done
 
 # Quality and certification documents.
 crop 52 1100x245+84+137 quality/safety-marks
-crop 53 285x410+72+268 quality/cert-organic 800
-crop 53 285x410+372+268 quality/cert-hormone-free 800
-crop 53 285x410+672+268 quality/cert-free-sale 800
-crop 53 290x415+970+262 quality/cert-radiation-test 800
-crop 54 400x570+225+140 quality/cert-halal 900
-crop 54 460x570+680+150 quality/cert-halal-attachment 900
+crop 53 285x410+72+268 quality/cert-organic 800 sr
+crop 53 285x410+372+268 quality/cert-hormone-free 800 sr
+crop 53 285x410+672+268 quality/cert-free-sale 800 sr
+crop 53 290x415+970+262 quality/cert-radiation-test 800 sr
+crop 54 400x570+225+140 quality/cert-halal 900 sr
+crop 54 460x570+680+150 quality/cert-halal-attachment 900 sr
 crop 55 1333x750+0+0 quality/registered-on
 crop 52 1333x750+0+0 quality/safety-overview
 
 # Company.
-crop 56 1333x470+0+0 company/afc-japan-building
+crop 56 1333x470+0+0 company/afc-japan-building 2400 sr
 crop 57 1333x750+0+0 company/afc-hd-group
 crop 58 1333x490+0+260 company/saikaya
 crop 59 1333x750+0+0 company/tokyo-stock-exchange
-crop 60 496x750+0+0 company/indonesia-2018 900
-crop 61 175x440+0+15 company/location-shizuoka 600
-crop 61 280x440+175+15 company/location-jakarta 600
-crop 61 300x440+455+15 company/location-surabaya 600
-crop 61 270x440+755+15 company/location-medan 600
-crop 61 310x440+1023+15 company/location-bali 600
+crop 60 496x750+0+0 company/indonesia-2018 900 sr
+crop 61 175x440+0+15 company/location-shizuoka 600 sr
+crop 61 280x440+175+15 company/location-jakarta 600 sr
+crop 61 300x440+455+15 company/location-surabaya 600 sr
+crop 61 270x440+755+15 company/location-medan 600 sr
+crop 61 310x440+1023+15 company/location-bali 600 sr
 crop 62 1333x750+0+0 company/afc-care
-crop 63 873x750+0+0 stories/health-center-lombok 1200
-crop 64 715x545+35+0 stories/health-center-poso 1200
-crop 65 813x750+0+0 stories/water-ntt 1200
+crop 63 873x750+0+0 stories/health-center-lombok 1200 sr
+crop 64 715x545+35+0 stories/health-center-poso 1200 sr
+crop 65 813x750+0+0 stories/water-ntt 1200 sr
 crop 30 1333x575+0+0 stories/dr-kuhnke 1200
 
 # Awards.

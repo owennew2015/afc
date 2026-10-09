@@ -162,7 +162,7 @@
 }
 @media (min-width: 1024px) {
   .p-hero {
-    min-height: min(100svh, 920px);
+    min-height: min(88svh, 820px);
     display: grid;
     align-items: center;
   }
@@ -191,7 +191,7 @@
 
 /* ---------- Chapters ---------- */
 .chapter {
-  padding-block: clamp(3.5rem, 2.5rem + 5vw, 7rem);
+  padding-block: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
   scroll-margin-top: var(--header-h);
 }
 .chapter--soft {
@@ -388,7 +388,7 @@
 .deep-dive__bar {
   display: grid;
   gap: var(--s-4);
-  padding-block: var(--s-6);
+  padding-block: var(--s-5);
 }
 .deep-dive__intro {
   margin-top: var(--s-2);
@@ -609,7 +609,7 @@
   position: relative;
   z-index: 2;
   margin-top: clamp(-3rem, -2rem - 2vw, -1.5rem);
-  padding-bottom: var(--s-7);
+  padding-bottom: var(--s-4);
 }
 .summary__card {
   display: grid;

@@ -185,7 +185,7 @@
   display: grid;
   gap: 0;
   counter-reset: trust;
-  margin-bottom: var(--s-8);
+  margin-bottom: var(--s-6);
 }
 .trust__step {
   position: relative;
@@ -360,7 +360,7 @@
 .care-banner {
   display: grid;
   gap: var(--s-5);
-  margin-bottom: var(--s-8);
+  margin-bottom: var(--s-6);
 }
 .care-banner__media img {
   width: 100%;

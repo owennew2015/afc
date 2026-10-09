@@ -36,6 +36,7 @@ export function SafeImage({ asset, sizes, fill, priority, className, alt }: Safe
     src: asset.src,
     alt: label,
     sizes,
+    quality: 88,
     priority,
     className,
     onError: () => setFailed(true),

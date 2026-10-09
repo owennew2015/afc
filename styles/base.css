@@ -219,7 +219,7 @@ ol {
 .section-head {
   display: grid;
   gap: var(--s-4);
-  margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  margin-bottom: clamp(1.5rem, 1.2rem + 1.4vw, 2.5rem);
   max-width: 44rem;
 }
 .section-head--center {
@@ -387,17 +387,14 @@ ol {
   filter: blur(8px);
 }
 .js .reveal--mask {
-  transform: none;
-  clip-path: inset(0 0 100% 0);
-  transition: clip-path 1.1s var(--ease-out), opacity var(--t-slow) var(--ease-out);
+  /* A clip-path start state would hide the element from IntersectionObserver
+     in Chromium, so the image never revealed. Fade and settle instead. */
+  transform: scale(1.03);
 }
 .js .reveal.is-visible {
   opacity: 1;
   transform: none;
   filter: none;
-}
-.js .reveal--mask.is-visible {
-  clip-path: inset(0 0 0 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
