@@ -4,17 +4,17 @@
 # Usage: scripts/extract-assets.sh path/to/AFC_Website_Asset_Pack_Optimized.pdf
 #
 # Requires poppler-utils (pdfimages) and ImageMagick with WebP support.
-# Optional: set SR_DIR to a folder holding OpenCV EDSR models (EDSR_x2.pb,
-# EDSR_x4.pb) to super-resolve the most visible assets via scripts/sr.py
-# (needs opencv-contrib-python-headless). Without it, assets are extracted
-# at source resolution.
+# Optional: set SR_DIR to a folder holding OpenCV super-resolution models
+# (EDSR_x2.pb, EDSR_x4.pb, FSRCNN_x2.pb) to upscale assets via scripts/sr.py
+# (needs opencv-contrib-python-headless): EDSR for the most visible assets,
+# FSRCNN for full slides. Without it, assets use a Lanczos resize.
 # Every PDF page holds one 1333x750 slide; pages map to the source-page
 # references (AFC-SRC-xx) listed on the pack's cover page.
 set -euo pipefail
 
 PDF="${1:?path to asset pack PDF}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-OUT="$ROOT/public/assets/afc"
+OUT="$ROOT/public/assets/afc-hd"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
@@ -27,10 +27,10 @@ for f in $(ls "$TMP"/img-* | sort); do
 done
 src() { echo "$TMP/p$1.png"; }
 
-# sr <scale> <in> <out>: EDSR super-resolution, or a Lanczos resize without models.
+# sr <scale> <in> <out> [edsr|fsrcnn]: super-resolution, or a Lanczos resize without models.
 sr() {
   if [ -n "${SR_DIR:-}" ]; then
-    python3 -I "$ROOT/scripts/sr.py" "$SR_DIR" "$1" "$2" "$3"
+    python3 -I "$ROOT/scripts/sr.py" "$SR_DIR" "$1" "$2" "$3" "${4:-edsr}"
   else
     convert "$2" -filter Lanczos -resize "$(( $1 * 100 ))%" "$3"
   fi
@@ -45,7 +45,9 @@ crop() {
     sr 2 "$TMP/c.png" "$TMP/c2.png"
     convert "$TMP/c2.png" -resize "${4:-1600}x>" -quality 86 "$OUT/$3.webp"
   else
-    convert "$(src "$1")" -crop "$2" +repage -resize "${4:-1600}x>" -quality 82 "$OUT/$3.webp"
+    convert "$(src "$1")" -crop "$2" +repage "$TMP/c.png"
+    sr 2 "$TMP/c.png" "$TMP/c2.png" fsrcnn
+    convert "$TMP/c2.png" -resize "${4:-1600}x>" -quality 86 "$OUT/$3.webp"
   fi
 }
 

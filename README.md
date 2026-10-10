@@ -34,7 +34,7 @@ components/
   ui/                SafeImage (no broken images), Reveal, icons, claim labels
 data/                all content — products/, company, quality, stories, opportunity
 styles/              tokens.css (colours, type, spacing, motion, dark mode) + layered CSS
-public/assets/afc/   web assets extracted from the asset pack
+public/assets/afc-hd/ web assets extracted from the asset pack
 scripts/             extract-assets.sh
 ```
 

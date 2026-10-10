@@ -14,7 +14,7 @@ export const SITE = {
   description:
     'AFC Life Science Indonesia — kenali AFC Japan, produk Utsukushhii, SOP Subarashi, dan Hikari, beserta informasi bahan, kualitas, dan sertifikasinya.',
   locale: 'id_ID',
-  ogImage: '/assets/afc/brand/og-default.jpg',
+  ogImage: '/assets/afc-hd/brand/og-default.jpg',
 } as const;
 
 export const WHATSAPP_MESSAGES = {
