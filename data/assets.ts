@@ -18,15 +18,15 @@ export const ASSETS = {
   logo: { src: `${BASE}/brand/afc-logo.png`, width: 1040, height: 320, alt: 'AFC', source: 'AFC-SRC-01' },
 
   products: {
-    subarashiPack: a('products/subarashi/pack', 1340, 940, 'Kemasan SOP Subarashi', 'AFC-SRC-09'),
+    subarashiPack: a('products/subarashi/pack-official', 1410, 1040, 'Kemasan SOP Subarashi 2.0', 'AFC — pengumuman harga resmi'),
     subarashiKeyVisual: a('products/subarashi/key-visual', 1600, 900, 'Key visual SOP Subarashi', 'AFC-SRC-09'),
     subarashiHexa: a('products/subarashi/hexa-peptide', 1600, 900, 'Materi Hexa Peptide SOP Subarashi', 'AFC-SRC-10'),
     subarashiIngredients: a('products/subarashi/ingredients-overview', 1600, 900, 'Ringkasan bahan SOP Subarashi', 'AFC-SRC-11'),
-    utsukushiiPack: a('products/utsukushii/pack', 1240, 820, 'Kemasan Utsukushhii 2.0', 'AFC-SRC-25'),
+    utsukushiiPack: a('products/utsukushii/pack-official', 1280, 940, 'Kemasan Utsukushhii 2.0', 'AFC — pengumuman harga resmi'),
     utsukushiiKeyVisual: a('products/utsukushii/key-visual', 1600, 900, 'Key visual Utsukushhii 2.0', 'AFC-SRC-25'),
     utsukushiiCore: a('products/utsukushii/ingredients-core', 1600, 900, 'Materi Powerful Ingredients Utsukushhii', 'AFC-SRC-26'),
     utsukushiiIngredients: a('products/utsukushii/ingredients-overview', 1600, 900, 'Ringkasan bahan Utsukushhii 2.0 Gold Version', 'AFC-SRC-27'),
-    hikariPack: a('products/hikari/pack', 980, 740, 'Kemasan Hikari', 'AFC-SRC-42'),
+    hikariPack: a('products/hikari/pack-official', 1300, 1040, 'Kemasan Hikari', 'AFC — pengumuman harga resmi'),
     hikariKeyVisual: a('products/hikari/key-visual', 1600, 900, 'Key visual Hikari', 'AFC-SRC-38'),
     hikariPeptides: a('products/hikari/triple-vegan-peptides', 1600, 900, 'Materi Triple Vegan Peptides Hikari', 'AFC-SRC-41'),
     hikariIngredients: a('products/hikari/ingredients-overview', 1600, 900, 'Ringkasan bahan Hikari', 'AFC-SRC-42'),
