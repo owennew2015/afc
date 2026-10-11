@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { WHATSAPP_MESSAGES } from '@/config/site';
+import { SOCIAL_LINKS, WHATSAPP_MESSAGES } from '@/config/site';
 import { FOOTER_LINKS } from '@/data/navigation';
 import { getWhatsAppUrl } from '@/lib/whatsapp';
+import { FacebookIcon, InstagramIcon } from '../ui/Icons';
 import { AFCLogo } from './AFCLogo';
 
 export function Footer() {
@@ -11,6 +12,16 @@ export function Footer() {
         <div className="footer__brand">
           <AFCLogo className="footer__logo" />
           <p className="muted">Wellness dari Jepang, sejak 1969.</p>
+          <ul className="footer__social" aria-label="Media sosial">
+            {SOCIAL_LINKS.map((s) => (
+              <li key={s.id}>
+                <a href={s.href} target="_blank" rel="noopener noreferrer" className="footer__social-link">
+                  {s.id === 'instagram' ? <InstagramIcon /> : <FacebookIcon />}
+                  <span>{s.id === 'instagram' ? s.handle : s.label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
         <nav aria-label="Tautan footer">
           <ul className="footer__links">

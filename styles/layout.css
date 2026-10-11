@@ -443,3 +443,33 @@
     justify-content: end;
   }
 }
+
+.footer__social {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-top: var(--s-2);
+}
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color var(--t-fast), color var(--t-fast);
+}
+.footer__social-link:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.footer__social-link svg {
+  width: 20px;
+  height: 20px;
+}
